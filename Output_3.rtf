@@ -1,0 +1,25 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2513
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 HelveticaNeue;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab560
+\pard\pardeftab560\slleading20\partightenfactor0
+
+\f0\fs24 \cf0 MAX\
+>>> spark.sql("SELECT STN, SUBSTRING(YEARMODA,5,6) as MONTHandDAY, LEFT(YEARMODA,4) as YEAR, MAX from cleanData where MAX =(SELECT MAX(MAX) from cleanData where MAX!=9999.9 and SUBSTRING(YEARMODA,1,4)= 2019) and LEFT(YEARMODA,4)=2019").show()\
++\'97\'97\'97+\'97\'97\'97\'97\'97+\'97\'97+\'97\'97+\
+|STN|MONTHandDAY|YEAR|MAX|\
++------+-----------+----+-----+\
+|956660| \'a0 \'a0 \'a0 0124|2019|121.1|\
++------+-----------+----+-----+\
+\
+MIN\
+\
+>>> spark.sql("SELECT STN, SUBSTRING(YEARMODA,5,6) as MONTHandDAY, LEFT(YEARMODA,4) as YEAR,MIN from cleanData where MIN =(select MIN(MIN) from cleanData where MIN!=9999.9 and SUBSTRING(YEARMODA,1,4)= 2019) and LEFT(YEARMODA,4)=2019").show()\
++------+-----------+----+------+\
+|STN|MONTHandDAY|YEAR|MIN|\
++------+-----------+----+------+\
+|896060| \'a0 \'a0 \'a0 0405|2019|-102.1|\
++------+-----------+----+------+\
+}

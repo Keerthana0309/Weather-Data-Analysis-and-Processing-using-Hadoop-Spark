@@ -1,0 +1,25 @@
+
+MAX
+
+>>> spark.sql("SELECT STN, SUBSTRING(YEARMODA,5,6) as MONTHandDAY, LEFT(YEARMODA,4) as YEAR, MAX from cleanData where MAX =(SELECT MAX(MAX) from cleanData where MAX!=9999.9 and SUBSTRING(YEARMODA,1,4)= 2019) and LEFT(YEARMODA,4)=2019").show()
+
++------+-----------+----+------+
+|STN|MONTHandDAY   |YEAR|MAX|
++------+-----------+----+-----+
+|956660|       0124|2019|121.1|
++------+-----------+----+-----+
+
+
+
+MIN
+
+>>> spark.sql("SELECT STN, SUBSTRING(YEARMODA,5,6) as MONTHandDAY, LEFT(YEARMODA,4) as YEAR,MIN from cleanData where MIN =(select MIN(MIN) from cleanData where MIN!=9999.9 and SUBSTRING(YEARMODA,1,4)= 2019) and LEFT(YEARMODA,4)=2019").show()
+
++------+-----------+----+------+
+|STN|MONTHandDAY   |YEAR|MIN|
++------+-----------+----+------+
+|896060|       0405|2019|-102.1|
++------+-----------+----+------+
+
+
+
